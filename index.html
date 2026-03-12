@@ -1,52 +1,247 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
-<title>Fibre Orange</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Orange Fibre Maroc</title>
 
 <style>
+
 body{
 font-family:Arial;
-background:#111;
+background:#0e0e0e;
 color:white;
+margin:0;
 text-align:center;
-padding:40px;
+}
+
+header{
+padding:30px;
+font-size:28px;
+color:orange;
+font-weight:bold;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+padding:20px;
 }
 
 .card{
-background:#1e1e1e;
+background:#1c1c1c;
 padding:20px;
-border-radius:10px;
-margin:20px auto;
-width:300px;
+margin:15px 0;
+border-radius:14px;
+box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 .price{
 color:orange;
 font-size:30px;
 font-weight:bold;
+margin:10px 0;
 }
+
+button{
+background:orange;
+border:none;
+padding:12px;
+border-radius:8px;
+width:100%;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff8c00;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:8px;
+border:none;
+}
+
+form{
+margin-top:30px;
+}
+
+.check{
+background:#333;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+font-size:16px;
+text-decoration:none;
+box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+.call{
+margin-top:20px;
+display:inline-block;
+background:orange;
+padding:12px 20px;
+border-radius:8px;
+color:black;
+text-decoration:none;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h1>Orange Fibre</h1>
+<header>Orange Fibre</header>
+
+<div class="container">
+
+<div class="check">
+
+<h3>Vérifier votre éligibilité</h3>
+
+<input type="text" id="city" placeholder="Votre quartier ou ville">
+
+<button onclick="check()">Vérifier</button>
+
+<p id="result"></p>
+
+</div>
+
 
 <div class="card">
 <h2>50 MB</h2>
-<p class="price">299 DH</p>
+<div class="price">299 DH</div>
 <p>Installation gratuite</p>
 <p>Routeur WiFi 6 OFFERT</p>
+<button onclick="selectOffer('50MB')">Commander</button>
 </div>
 
 <div class="card">
 <h2>100 MB</h2>
-<p class="price">349 DH</p>
+<div class="price">349 DH</div>
+<button onclick="selectOffer('100MB')">Commander</button>
 </div>
 
-<p>📞 0780643135</p>
+<div class="card">
+<h2>200 MB</h2>
+<div class="price">449 DH</div>
+<button onclick="selectOffer('200MB')">Commander</button>
+</div>
+
+<div class="card">
+<h2>500 MB</h2>
+<div class="price">749 DH</div>
+<button onclick="selectOffer('500MB')">Commander</button>
+</div>
+
+
+<form id="form">
+
+<h3>Demande d'installation</h3>
+
+<input type="text" id="name" placeholder="Nom complet" required>
+
+<input type="tel" id="phone" placeholder="Téléphone" required>
+
+<input type="text" id="address" placeholder="Adresse complète" required>
+
+<input type="hidden" id="offer">
+
+<button type="submit">Envoyer la demande</button>
+
+</form>
+
+<a class="call" href="tel:0780643135">
+Appeler maintenant
+</a>
+
+</div>
+
+
+<a class="whatsapp" href="https://wa.me/212780643135">
+WhatsApp
+</a>
+
+
+<script>
+
+function check(){
+
+let city=document.getElementById("city").value;
+
+if(city==""){
+
+document.getElementById("result").innerHTML="Entrez votre quartier";
+
+return;
+
+}
+
+document.getElementById("result").innerHTML="Bonne nouvelle ! La Fibre est probablement disponible dans votre zone.";
+
+}
+
+
+function selectOffer(offer){
+
+document.getElementById("offer").value=offer;
+
+window.scrollTo({
+
+top:document.getElementById("form").offsetTop,
+
+behavior:"smooth"
+
+});
+
+}
+
+
+document.getElementById("form").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+
+let phone=document.getElementById("phone").value;
+
+let address=document.getElementById("address").value;
+
+let offer=document.getElementById("offer").value;
+
+let message=`Demande Fibre Orange
+
+Nom: ${name}
+
+Téléphone: ${phone}
+
+Adresse: ${address}
+
+Offre: ${offer}`;
+
+let url="https://wa.me/212780643135?text="+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
+});
+
+</script>
 
 </body>
 </html>
