@@ -20,6 +20,9 @@ text-align:center;
 header{
 background:#111;
 padding:25px;
+}
+
+.title{
 font-size:26px;
 color:orange;
 font-weight:bold;
@@ -28,6 +31,12 @@ font-weight:bold;
 .subtitle{
 font-size:18px;
 margin-top:10px;
+}
+
+.counter{
+margin-top:10px;
+font-size:14px;
+color:#aaa;
 }
 
 .container{
@@ -65,23 +74,16 @@ cursor:pointer;
 margin-top:10px;
 }
 
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
-border-radius:8px;
-border:none;
+button:hover{
+background:#ff8c00;
 }
 
-form{
-margin-top:30px;
-}
-
-.check{
-background:#222;
-padding:20px;
+.trust{
+background:#1a1a1a;
+padding:15px;
 border-radius:10px;
 margin-bottom:20px;
+font-size:14px;
 }
 
 .whatsapp{
@@ -113,23 +115,25 @@ text-decoration:none;
 <body>
 
 <header>
-Orange Fibre Casablanca
+
+<div class="title">Orange Fibre</div>
+
 <div class="subtitle">
-Internet rapide dès 249DH
+Internet ultra rapide dès 249DH
 </div>
+
+<div class="counter">
+✔ Plus de <span id="orders">37</span> demandes aujourd'hui
+</div>
+
 </header>
+
 
 <div class="container">
 
-<div class="check">
+<div class="trust">
 
-<h3>Vérifier votre éligibilité</h3>
-
-<input type="text" id="zone" placeholder="Votre quartier">
-
-<button onclick="check()">Vérifier</button>
-
-<p id="result"></p>
+Installation rapide • Routeur WiFi 6 • Support Orange
 
 </div>
 
@@ -142,7 +146,7 @@ Internet rapide dès 249DH
 
 <p class="install">Installation : 99 DH</p>
 
-<button onclick="selectOffer('20MB')">Commander</button>
+<button onclick="order('20MB','249DH')">Commander</button>
 
 </div>
 
@@ -155,7 +159,7 @@ Internet rapide dès 249DH
 
 <p class="install">Installation gratuite</p>
 
-<button onclick="selectOffer('50MB')">Commander</button>
+<button onclick="order('50MB','299DH')">Commander</button>
 
 </div>
 
@@ -168,7 +172,7 @@ Internet rapide dès 249DH
 
 <p class="install">Installation gratuite</p>
 
-<button onclick="selectOffer('100MB')">Commander</button>
+<button onclick="order('100MB','349DH')">Commander</button>
 
 </div>
 
@@ -181,7 +185,7 @@ Internet rapide dès 249DH
 
 <p class="install">Installation gratuite</p>
 
-<button onclick="selectOffer('200MB')">Commander</button>
+<button onclick="order('200MB','449DH')">Commander</button>
 
 </div>
 
@@ -194,26 +198,10 @@ Internet rapide dès 249DH
 
 <p class="install">Installation gratuite</p>
 
-<button onclick="selectOffer('500MB')">Commander</button>
+<button onclick="order('500MB','749DH')">Commander</button>
 
 </div>
 
-
-<form id="form">
-
-<h3>Demande d'installation</h3>
-
-<input type="text" id="name" placeholder="Nom complet" required>
-
-<input type="tel" id="phone" placeholder="Téléphone" required>
-
-<input type="text" id="address" placeholder="Adresse complète" required>
-
-<input type="hidden" id="offer">
-
-<button type="submit">Envoyer la demande</button>
-
-</form>
 
 <a class="call" href="tel:0780643135">
 Appeler maintenant
@@ -229,51 +217,29 @@ WhatsApp
 
 <script>
 
-function check(){
+function order(speed,price){
 
-let zone=document.getElementById("zone").value;
+let message = `سلام عبد الرحمن،
+أنا مهتم بعرض Fibre Orange ${speed} بسعر ${price}.
 
-if(zone===""){
-document.getElementById("result").innerHTML="Veuillez entrer votre quartier";
-return;
-}
+هل يمكن التحقق من توفر الفايبر في عنواني؟`;
 
-document.getElementById("result").innerHTML="Bonne nouvelle ! La fibre est probablement disponible dans votre zone.";
+let url = "https://wa.me/212780643135?text=" + encodeURIComponent(message);
 
-}
-
-function selectOffer(offer){
-
-document.getElementById("offer").value=offer;
-
-window.scrollTo({
-top:document.getElementById("form").offsetTop,
-behavior:"smooth"
-});
+window.open(url, "_blank");
 
 }
 
-document.getElementById("form").addEventListener("submit",function(e){
 
-e.preventDefault();
+setInterval(function(){
 
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let address=document.getElementById("address").value;
-let offer=document.getElementById("offer").value;
+let num = document.getElementById("orders");
 
-let message=`Demande Fibre Orange
+let value = parseInt(num.innerText);
 
-Nom: ${name}
-Téléphone: ${phone}
-Adresse: ${address}
-Offre: ${offer}`;
+num.innerText = value + 1;
 
-let url="https://wa.me/212780643135?text="+encodeURIComponent(message);
-
-window.open(url,"_blank");
-
-});
+},15000);
 
 </script>
 
