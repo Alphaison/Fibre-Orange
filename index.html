@@ -5,42 +5,72 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fibre Orange Casablanca</title>
+<title>Orange Fibre Maroc</title>
 
 <style>
 
 body{
 font-family:Arial;
+margin:0;
 background:#0f0f0f;
 color:white;
-margin:0;
 text-align:center;
 }
 
-header{
-background:#111;
-padding:25px;
-}
+/* NAVBAR */
 
-.title{
-font-size:26px;
+.nav{
+background:#000;
+padding:15px;
+font-size:22px;
 color:orange;
 font-weight:bold;
 }
 
-.subtitle{
-font-size:18px;
+/* HERO */
+
+.hero{
+padding:40px 20px;
+background:linear-gradient(180deg,#111,#0f0f0f);
+}
+
+.hero h1{
+font-size:28px;
+color:white;
+}
+
+.hero p{
+font-size:16px;
 margin-top:10px;
 }
 
-.counter{
+.gift{
 margin-top:10px;
-font-size:14px;
-color:#aaa;
+color:#00ffa6;
+font-weight:bold;
 }
+
+/* FEATURES */
+
+.features{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin:20px;
+font-size:14px;
+}
+
+.feature{
+background:#1c1c1c;
+padding:10px 15px;
+border-radius:10px;
+}
+
+/* OFFERS */
 
 .container{
-max-width:420px;
+max-width:500px;
 margin:auto;
 padding:20px;
 }
@@ -49,12 +79,29 @@ padding:20px;
 background:#1c1c1c;
 padding:20px;
 margin:15px 0;
-border-radius:14px;
+border-radius:15px;
+position:relative;
+}
+
+.best{
+border:2px solid orange;
+}
+
+.badge{
+position:absolute;
+top:-10px;
+right:10px;
+background:orange;
+color:black;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+font-weight:bold;
 }
 
 .price{
+font-size:30px;
 color:orange;
-font-size:28px;
 font-weight:bold;
 }
 
@@ -63,28 +110,37 @@ font-size:14px;
 margin-top:5px;
 }
 
+/* BUTTON */
+
 button{
 background:orange;
 border:none;
-padding:12px;
-border-radius:8px;
+padding:14px;
+border-radius:10px;
 width:100%;
-font-size:16px;
+font-size:17px;
 cursor:pointer;
 margin-top:10px;
+transition:0.3s;
 }
 
 button:hover{
-background:#ff8c00;
+transform:scale(1.05);
 }
 
-.trust{
-background:#1a1a1a;
-padding:15px;
+/* CONTACT */
+
+.call{
+display:inline-block;
+background:orange;
+color:black;
+padding:12px 20px;
 border-radius:10px;
-margin-bottom:20px;
-font-size:14px;
+margin-top:20px;
+text-decoration:none;
 }
+
+/* WHATSAPP FLOAT */
 
 .whatsapp{
 position:fixed;
@@ -98,44 +154,44 @@ text-decoration:none;
 font-size:16px;
 }
 
-.call{
-display:inline-block;
-background:orange;
-color:black;
-padding:12px 20px;
-border-radius:8px;
-margin-top:20px;
-text-decoration:none;
-}
-
 </style>
 
 </head>
 
 <body>
 
-<header>
-
-<div class="title">Orange Fibre</div>
-
-<div class="subtitle">
-Internet ultra rapide dès 249DH
+<div class="nav">
+Orange Fibre
 </div>
 
-<div class="counter">
-✔ Plus de <span id="orders">37</span> demandes aujourd'hui
+
+<div class="hero">
+
+<h1>Internet Fibre Ultra Rapide</h1>
+
+<p>Connexion stable pour Netflix, Gaming et Télétravail</p>
+
+<div class="gift">
+🎁 Routeur WiFi 6 OFFERT sur toutes les offres
 </div>
 
-</header>
+</div>
+
+
+<div class="features">
+
+<div class="feature">⚡ Installation rapide</div>
+
+<div class="feature">📶 WiFi 6 puissant</div>
+
+<div class="feature">🎮 Idéal pour gaming</div>
+
+<div class="feature">📺 Streaming 4K</div>
+
+</div>
 
 
 <div class="container">
-
-<div class="trust">
-
-Installation rapide • Routeur WiFi 6 • Support Orange
-
-</div>
 
 
 <div class="card">
@@ -144,6 +200,7 @@ Installation rapide • Routeur WiFi 6 • Support Orange
 
 <div class="price">249 DH</div>
 
+<p class="install">Routeur WiFi 6 OFFERT</p>
 <p class="install">Installation : 99 DH</p>
 
 <button onclick="order('20MB','249DH')">Commander</button>
@@ -151,12 +208,15 @@ Installation rapide • Routeur WiFi 6 • Support Orange
 </div>
 
 
-<div class="card">
+<div class="card best">
+
+<div class="badge">PLUS CHOISI</div>
 
 <h2>50 MB</h2>
 
 <div class="price">299 DH</div>
 
+<p class="install">Routeur WiFi 6 OFFERT</p>
 <p class="install">Installation gratuite</p>
 
 <button onclick="order('50MB','299DH')">Commander</button>
@@ -170,6 +230,7 @@ Installation rapide • Routeur WiFi 6 • Support Orange
 
 <div class="price">349 DH</div>
 
+<p class="install">Routeur WiFi 6 OFFERT</p>
 <p class="install">Installation gratuite</p>
 
 <button onclick="order('100MB','349DH')">Commander</button>
@@ -183,6 +244,7 @@ Installation rapide • Routeur WiFi 6 • Support Orange
 
 <div class="price">449 DH</div>
 
+<p class="install">Routeur WiFi 6 OFFERT</p>
 <p class="install">Installation gratuite</p>
 
 <button onclick="order('200MB','449DH')">Commander</button>
@@ -196,6 +258,7 @@ Installation rapide • Routeur WiFi 6 • Support Orange
 
 <div class="price">749 DH</div>
 
+<p class="install">Routeur WiFi 6 OFFERT</p>
 <p class="install">Installation gratuite</p>
 
 <button onclick="order('500MB','749DH')">Commander</button>
@@ -229,17 +292,6 @@ let url = "https://wa.me/212780643135?text=" + encodeURIComponent(message);
 window.open(url, "_blank");
 
 }
-
-
-setInterval(function(){
-
-let num = document.getElementById("orders");
-
-let value = parseInt(num.innerText);
-
-num.innerText = value + 1;
-
-},15000);
 
 </script>
 
