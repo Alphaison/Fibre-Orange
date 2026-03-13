@@ -5,23 +5,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Orange Fibre Maroc</title>
+<title>Fibre Orange Casablanca</title>
 
 <style>
 
 body{
 font-family:Arial;
-background:#0e0e0e;
+background:#0f0f0f;
 color:white;
 margin:0;
 text-align:center;
 }
 
 header{
-padding:30px;
-font-size:28px;
+background:#111;
+padding:25px;
+font-size:26px;
 color:orange;
 font-weight:bold;
+}
+
+.subtitle{
+font-size:18px;
+margin-top:10px;
 }
 
 .container{
@@ -35,14 +41,17 @@ background:#1c1c1c;
 padding:20px;
 margin:15px 0;
 border-radius:14px;
-box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 .price{
 color:orange;
-font-size:30px;
+font-size:28px;
 font-weight:bold;
-margin:10px 0;
+}
+
+.install{
+font-size:14px;
+margin-top:5px;
 }
 
 button{
@@ -53,10 +62,7 @@ border-radius:8px;
 width:100%;
 font-size:16px;
 cursor:pointer;
-}
-
-button:hover{
-background:#ff8c00;
+margin-top:10px;
 }
 
 input{
@@ -72,9 +78,9 @@ margin-top:30px;
 }
 
 .check{
-background:#333;
+background:#222;
 padding:20px;
-border-radius:12px;
+border-radius:10px;
 margin-bottom:20px;
 }
 
@@ -84,20 +90,19 @@ bottom:20px;
 right:20px;
 background:#25D366;
 color:white;
-padding:15px 20px;
+padding:15px 18px;
 border-radius:50px;
-font-size:16px;
 text-decoration:none;
-box-shadow:0 0 10px rgba(0,0,0,0.4);
+font-size:16px;
 }
 
 .call{
-margin-top:20px;
 display:inline-block;
 background:orange;
+color:black;
 padding:12px 20px;
 border-radius:8px;
-color:black;
+margin-top:20px;
 text-decoration:none;
 }
 
@@ -107,7 +112,12 @@ text-decoration:none;
 
 <body>
 
-<header>Orange Fibre</header>
+<header>
+Orange Fibre Casablanca
+<div class="subtitle">
+Internet rapide dès 249DH
+</div>
+</header>
 
 <div class="container">
 
@@ -115,7 +125,7 @@ text-decoration:none;
 
 <h3>Vérifier votre éligibilité</h3>
 
-<input type="text" id="city" placeholder="Votre quartier ou ville">
+<input type="text" id="zone" placeholder="Votre quartier">
 
 <button onclick="check()">Vérifier</button>
 
@@ -125,29 +135,67 @@ text-decoration:none;
 
 
 <div class="card">
+
+<h2>20 MB</h2>
+
+<div class="price">249 DH</div>
+
+<p class="install">Installation : 99 DH</p>
+
+<button onclick="selectOffer('20MB')">Commander</button>
+
+</div>
+
+
+<div class="card">
+
 <h2>50 MB</h2>
+
 <div class="price">299 DH</div>
-<p>Installation gratuite</p>
-<p>Routeur WiFi 6 OFFERT</p>
+
+<p class="install">Installation gratuite</p>
+
 <button onclick="selectOffer('50MB')">Commander</button>
+
 </div>
 
+
 <div class="card">
+
 <h2>100 MB</h2>
+
 <div class="price">349 DH</div>
+
+<p class="install">Installation gratuite</p>
+
 <button onclick="selectOffer('100MB')">Commander</button>
+
 </div>
 
+
 <div class="card">
+
 <h2>200 MB</h2>
+
 <div class="price">449 DH</div>
+
+<p class="install">Installation gratuite</p>
+
 <button onclick="selectOffer('200MB')">Commander</button>
+
 </div>
 
+
 <div class="card">
+
 <h2>500 MB</h2>
+
 <div class="price">749 DH</div>
+
+<p class="install">Installation gratuite</p>
+
 <button onclick="selectOffer('500MB')">Commander</button>
+
 </div>
 
 
@@ -183,56 +231,42 @@ WhatsApp
 
 function check(){
 
-let city=document.getElementById("city").value;
+let zone=document.getElementById("zone").value;
 
-if(city==""){
-
-document.getElementById("result").innerHTML="Entrez votre quartier";
-
+if(zone===""){
+document.getElementById("result").innerHTML="Veuillez entrer votre quartier";
 return;
-
 }
 
-document.getElementById("result").innerHTML="Bonne nouvelle ! La Fibre est probablement disponible dans votre zone.";
+document.getElementById("result").innerHTML="Bonne nouvelle ! La fibre est probablement disponible dans votre zone.";
 
 }
-
 
 function selectOffer(offer){
 
 document.getElementById("offer").value=offer;
 
 window.scrollTo({
-
 top:document.getElementById("form").offsetTop,
-
 behavior:"smooth"
-
 });
 
 }
-
 
 document.getElementById("form").addEventListener("submit",function(e){
 
 e.preventDefault();
 
 let name=document.getElementById("name").value;
-
 let phone=document.getElementById("phone").value;
-
 let address=document.getElementById("address").value;
-
 let offer=document.getElementById("offer").value;
 
 let message=`Demande Fibre Orange
 
 Nom: ${name}
-
 Téléphone: ${phone}
-
 Adresse: ${address}
-
 Offre: ${offer}`;
 
 let url="https://wa.me/212780643135?text="+encodeURIComponent(message);
